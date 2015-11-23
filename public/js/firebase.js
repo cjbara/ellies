@@ -1,5 +1,5 @@
 //Creates a new account, adds to the database, and logs them in
-function createNewUser (name, room, email, pw){
+function createNewUser (firstName, lastName, fisherName, room, email, pw){
 	this.firebase = new Firebase("https://ellies-deli.firebaseio.com/");
 	var userData = {};
 	userData['email'] = email;
@@ -14,7 +14,9 @@ function createNewUser (name, room, email, pw){
 
 			//Add this user to the database
 			var newData = {};
-			newData['name'] = name;
+			newData['first'] = firstName;
+			newData['last'] = lastName;
+			newData['fisher'] = fisherName;
 			newData['room'] = room;
 			newData['email'] = email;
 			newData['orders'] = {};
@@ -62,12 +64,19 @@ function getUserData(id){
 //Fills out a user's data in the preferences section
 function fillOutUserData(userData){
 	if(userData){
-		$('#userDataName').text(userData.name);
+		$('#userDataName').text(userData.first+" "+userData.last);
 		$('#userDataRoom').text(userData.room);
 		$('#userDataEmail').text(userData.email);
-		$('#username').text("Logged in as "+userData.name);
+		if(userData.fisher){
+			$('#username').text("Welcome, "+userData.fisher);
+			$('#userDataFisher').text(userData.fisher);
+		} else {
+			$('#username').text("Welcome, "+userData.first);
+			$('#fisherNamePlace').hide();
+		}
 	} else {
 		$('#userDataName').text(" ");
+		$('#userDataFisher').text(" ");
 		$('#userDataRoom').text(" ");
 		$('#userDataEmail').text(" ");
 		$('#username').text("Not Logged In");

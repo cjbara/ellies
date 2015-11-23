@@ -27,11 +27,13 @@ $(document).ready(function() {
 	$("#registerUser").on("click",function() {
 		console.log("Register User");
 		var email = $('#regemail').val();
-		var name = $('#regname').val();
+		var firstName = $('#regFirstName').val();
+		var lastName = $('#regLastName').val();
+		var fisherName = $('#regFisherName').val();
 		var room = $('#regroom').val();
 		var password = $('#regpassword').val();
 
-		createNewUser(name, room, email, password);
+		createNewUser(firstName, lastName, fisherName, room, email, password);
 		$("#registerModal").modal("hide");
 	} );
 
