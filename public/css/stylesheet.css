@@ -1,3 +1,13 @@
 h4 b {
 	color: #736F6E;
 }
+
+.thumbnail img {
+	height: 100%;
+	width: 100%;
+}
+
+#alerts {
+	z-index:-1;
+	position: relative;
+}
